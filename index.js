@@ -1,7 +1,6 @@
+//packages
 const inquirer = require("inquirer");
 const select = require('./selectC');
-
-
 
 function init() {
 
@@ -16,7 +15,7 @@ function init() {
 
 
     ]).then((data) => {
-        //these create the shpae of the logo
+        //selects function based of what you choose
         if(data.chosenL === 'view all departments') {
             select.viewDepartments();
         }
@@ -43,5 +42,5 @@ function init() {
     });
 };
 
-    
+    //starts program
     init();
