@@ -48,7 +48,7 @@ const db = mysql.createConnection(
         name: 'name',
       },
     ]).then((data) => {
-      db.query(`INSERT INTO department (name) VALUES ("?");`, data.name, (err, result) => {
+      db.query(`INSERT INTO department (name) VALUES ("?");`, data.name, (err) => {
         if (err) {
           console.log(err);
         }
@@ -74,7 +74,7 @@ const db = mysql.createConnection(
         name: 'depart',
       },
     ]).then((data) => {
-      db.query(`INSERT INTO role (title, salary, department_id) VALUES ("?",?,?);`, data.name, data.salary, data.depart, (err, result) => {
+      db.query(`INSERT INTO role (title, salary, department_id) VALUES ("${data.name}", ${data.salary}, ${data.depart});`, (err) => {
         if (err) {
           console.log(err);
         }
@@ -105,14 +105,14 @@ const db = mysql.createConnection(
         name: 'manager',
       },
     ]).then((data) => {
-      db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("?","?",?,?);`, data.name, (err, result) => {
-        if (err) {
-          console.log(err);
-        }
+      db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ("${data.nameF}", "${data.nameL}", ${data.roleN}, ${data.manager});`, () => {
+        //if (err) {
+        //  console.log(err);
+        //}
       });
     });
   }
-//updates employee to new department
+//updates employee to new 
 function updateEmployee() {
   inquirer.prompt([
     {
@@ -122,18 +122,18 @@ function updateEmployee() {
     },
     {
       type: 'input',
-      message: 'Which department will you give them?',
+      message: 'Which new role will you give them?',
       name: 'depart',
     },
   ]).then((data) => {
-    db.query(`UPDATE employee SET department = ? WHERE first_name = ?;`, data.depart, data.chosenL, (err, result) => {
+    db.query(`UPDATE employee SET role_id = ${data.depart} WHERE first_name = "${data.chosenL}";`, (err) => {
       if (err) {
         console.log(err);
       }
     });
   });
 }
-//exports
+
 module.exports = {
   viewDepartments,
   viewRole,
