@@ -14,7 +14,7 @@ You will need to install mysql2
 
 To run the application in your terminal you have to use node index.js. Then you will need to answer the prompts given to you.
 
-Link to walkthrough video: ()
+Link to walkthrough video: (https://drive.google.com/file/d/1Zu0NPyf3qIOM7f9ZKZxTZIVzz34tu4Oq/view?usp=sharing)
 
 Link to my repository: (https://github.com/FoundEven/WeekTwelveChallenge_EmployeeTracker)
 
